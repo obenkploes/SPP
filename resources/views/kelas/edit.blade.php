@@ -1,30 +1,30 @@
 @extends('Layout')
 
-@section('title', 'SPP')
+@section('title', 'Kelas')
 
 @section('content')
     <div class="row">
         <div class="col-4">
             <div class="card shadow">
                 <div class="card-header">
-                    <span class="card-title">Form SPP</span>
+                    <span class="card-title">Form Kelas</span>
                 </div>
                 <div class="card-body">
                     <form action="" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="tahun" class="form-label">Tahun</label>
-                            <input type="text" class="form-control" id="tahun" name="tahun"
-                                placeholder="Tahun masuk siswa">
+                            <label for="nama_kelas" class="form-label">Kelas</label>
+                            <input type="text" class="form-control" id="nama_kelas" name="nama_kelas"
+                                placeholder="Nama Kelas" value="{{ $edit->nama_kelas }}">
                         </div>
                         <div class="mb-3">
-                            <label for="nominal" class="form-label">Nominal</label>
-                            <input type="number" class="form-control" id="nominal" name="nominal"
-                                placeholder="Spp bulanan">
+                            <label for="kompetensi_keahlian" class="form-label">Kompetensi Keahlian</label>
+                            <input type="text" class="form-control" id="kompetensi_keahlian" name="kompetensi_keahlian"
+                                placeholder="Nama Jurusan" value="{{ $edit->kompetensi_keahlian }}">
                         </div>
                         <div class="mb-3 row">
                             <div class="col-6">
-                                <a class="btn btn-info form-control" href="{{url('spp')}}">Batal</a>
+                                <a class="btn btn-info form-control" href="{{url('kelas')}}">Batal</a>
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-primary form-control">
@@ -46,23 +46,24 @@
             </div>
         </div>
         <div class="col-8">
-            @if (session('success'))
+            @if (session('messaage'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
+                    <strong>{{ session('messaage') }}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
             <div class="card shadow">
                 <div class="card-header">
-                    <span class="card-title">Data spp tahunan</span>
+                    <span class="card-title">Data kelas</span>
                 </div>
                 <div class="card-body">
                     <table id="table-spp" class="table table-sm table-hover">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tahun masuk</th>
-                                <th>Nominal</th>
+                                <th>Kelas</th>
+                                <th>Kompetensi Keahlian</th>
+                                <th>Jumlah siswa</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -70,16 +71,17 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($spp as $item)
+                            @foreach ($kelas as $item)
                                 <tr class="align-middle">
                                     <td>{{ $no }}</td>
-                                    <td>{{ $item->tahun }}</td>
-                                    <td>{{ $item->nominal }}</td>
+                                    <td>{{ $item->nama_kelas }}</td>
+                                    <td>{{ $item->kompetensi_keahlian }}</td>
+                                    <td>{{ count($item->siswa) }}</td>
                                     <td>
-                                        <a href="{{ url('spp/edit/' . $item->id) }}" class="btn btn-success btn-sm">
+                                        <a href="{{ url('kelas/edit/' . $item->id) }}" class="btn btn-success btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <a href="{{ url('spp/delete/' . $item->id) }}" class="btn btn-sm btn-danger">
+                                        <a href="{{ url('kelas/delete/' . $item->id) }}" class="btn btn-sm btn-danger">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </td>

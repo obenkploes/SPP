@@ -1,6 +1,6 @@
 @extends('Layout')
 
-@section('title', 'SPP')
+@section('title','SPP')
 
 @section('content')
     <div class="row">
@@ -14,24 +14,22 @@
                         @csrf
                         <div class="mb-3">
                             <label for="tahun" class="form-label">Tahun</label>
-                            <input type="text" class="form-control" id="tahun" name="tahun"
-                                placeholder="Tahun masuk siswa">
+                            <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Tahun masuk siswa" value="{{$data->tahun}}">
                         </div>
                         <div class="mb-3">
                             <label for="nominal" class="form-label">Nominal</label>
-                            <input type="number" class="form-control" id="nominal" name="nominal"
-                                placeholder="Spp bulanan">
+                            <input type="number" class="form-control" id="nominal" name="nominal" placeholder="Spp bulanan" value="{{$data->nominal}}">
                         </div>
                         <div class="mb-3 row">
                             <div class="col-6">
-                                <a class="btn btn-info form-control" href="{{url('spp')}}">Batal</a>
+                                <a class="btn btn-info form-control" href="{{url(spp)}}">Batal</a>
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-primary form-control">
                                     Simpan
                                     <i class="bi bi-floppy"></i>
                                 </button>
-                            </div>
+                            </div>                         
                         </div>
                     </form>
                 </div>
@@ -46,12 +44,6 @@
             </div>
         </div>
         <div class="col-8">
-            @if (session('success'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
             <div class="card shadow">
                 <div class="card-header">
                     <span class="card-title">Data spp tahunan</span>
@@ -68,18 +60,18 @@
                         </thead>
                         <tbody>
                             @php
-                                $no = 1;
+                                $no=1;
                             @endphp
                             @foreach ($spp as $item)
                                 <tr class="align-middle">
-                                    <td>{{ $no }}</td>
-                                    <td>{{ $item->tahun }}</td>
-                                    <td>{{ $item->nominal }}</td>
+                                    <td>{{$no}}</td>
+                                    <td>{{$item->tahun}}</td>
+                                    <td>{{$item->nominal}}</td>
                                     <td>
-                                        <a href="{{ url('spp/edit/' . $item->id) }}" class="btn btn-success btn-sm">
+                                        <a href="{{url('spp/edit/'.$item->id)}}" class="btn btn-success btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <a href="{{ url('spp/delete/' . $item->id) }}" class="btn btn-sm btn-danger">
+                                        <a href="{{url('spp/delete/'.$item->id)}}" class="btn btn-sm btn-danger">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </td>

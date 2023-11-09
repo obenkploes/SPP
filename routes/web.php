@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SppController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +23,24 @@ Route::get('/', function () {
 
 Route::prefix('spp')->group(function () {
     Route::get('/',[SppController::class,'index']);
+    Route::post('/',[SppController::class,'store']);
+    Route::get('edit/{id}',[SppController::class,'show']);
+    Route::post('edit/{id}',[SppController::class,'update']);
+    Route::get('delete/{id}',[SppController::class,'delete']);
+});
+Route::prefix('kelas')->group(function () {
+    Route::get('/',[KelasController::class,'index']);
+    Route::post('/',[KelasController::class,'store']);
+    Route::get('edit/{id}',[KelasController::class,'show']);
+    Route::post('edit/{id}',[KelasController::class,'update']);
+    Route::get('delete/{id}',[KelasController::class,'delete']);
+});
+
+Route::prefix('siswa')->group(function () {
+    Route::get('/',[SiswaController::class,'index']);
+    Route::get('create',[SiswaController::class,'create']);
+    Route::post('create',[SiswaController::class,'store']);
+    Route::get('edit/{id}',[SiswaController::class,'show']);
+    Route::post('edit/{id}',[SiswaController::class,'update']);
+    Route::get('delete/{id}',[SiswaController::class,'delete']);
 });
