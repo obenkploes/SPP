@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutentikasiController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
@@ -54,3 +55,4 @@ Route::prefix('petugas')->group(function () {
     Route::post('edit/{id}',[PetugasController::class,'update']);
     Route::get('delete/{id}',[PetugasController::class,'delete']);
 });
+Route::get('login',[AutentikasiController::class,'login']);
