@@ -55,4 +55,6 @@ Route::prefix('petugas')->group(function () {
     Route::post('edit/{id}',[PetugasController::class,'update']);
     Route::get('delete/{id}',[PetugasController::class,'delete']);
 });
-Route::get('login',[AutentikasiController::class,'login']);
+Route::get('login',[AutentikasiController::class,'login'])->name('login');
+Route::post('admin/login',[AutentikasiController::class,'adminLogin']);
+Route::post('siswa/login',[AutentikasiController::class,'siswaLogin']);
