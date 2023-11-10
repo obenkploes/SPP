@@ -26,7 +26,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="nama_petugas" class="form-label">Nama lengkap</label>
-                    <input type="text" class="form-control" id="nama_petugas" name="nama_petugas" placeholder="Nama petugas">
+                    <input type="text" class="form-control" id="nama_petugas" name="nama_petugas"
+                        placeholder="Nama petugas">
                 </div>
                 <div class="mb-3">
                     <label for="level" class="form-label">Level</label>
@@ -44,12 +45,12 @@
             </form>
         </div>
         @if ($errors->any())
-        <div class="alert alert-warning alert-dismissible fade show mx-2" role="alert">
-            @foreach ($errors->all() as $item)
-                <strong class="d-block">{{ $item }}</strong>
-            @endforeach
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+            <div class="alert alert-warning alert-dismissible fade show mx-2" role="alert">
+                @foreach ($errors->all() as $item)
+                    <strong class="d-block">{{ $item }}</strong>
+                @endforeach
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
     </div>
 @endsection
