@@ -21,6 +21,7 @@ class AutentikasiController extends Controller
             'password'=> $request->input('password'),
         ];
         if(Auth::attempt($cek)){
+            $request->session()->regenerate();
             return redirect('')->with('message','Selamat datang');
         }
         return back()->with('message','Login gagal');

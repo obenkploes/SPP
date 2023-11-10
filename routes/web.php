@@ -22,39 +22,40 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('/spp')->group(function () {
+        Route::get('/',[SppController::class,'index']);
+        Route::post('/',[SppController::class,'store']);
+        Route::get('edit/{id}',[SppController::class,'show']);
+        Route::post('edit/{id}',[SppController::class,'update']);
+        Route::get('delete/{id}',[SppController::class,'delete']);
+    });
+    Route::prefix('kelas')->group(function () {
+        Route::get('/',[KelasController::class,'index']);
+        Route::post('/',[KelasController::class,'store']);
+        Route::get('edit/{id}',[KelasController::class,'show']);
+        Route::post('edit/{id}',[KelasController::class,'update']);
+        Route::get('delete/{id}',[KelasController::class,'delete']);
+    });
+    Route::prefix('siswa')->group(function () {
+        Route::get('/',[SiswaController::class,'index']);
+        Route::get('create',[SiswaController::class,'create']);
+        Route::post('create',[SiswaController::class,'store']);
+        Route::get('edit/{id}',[SiswaController::class,'show']);
+        Route::post('edit/{id}',[SiswaController::class,'update']);
+        Route::get('delete/{id}',[SiswaController::class,'delete']);
+    });
+    
+    Route::prefix('petugas')->group(function () {
+        Route::get('/',[PetugasController::class,'index']);
+        Route::get('create',[PetugasController::class,'create']);
+        Route::post('create',[PetugasController::class,'store']);
+        Route::get('edit/{id}',[PetugasController::class,'show']);
+        Route::post('edit/{id}',[PetugasController::class,'update']);
+        Route::get('delete/{id}',[PetugasController::class,'delete']);
+    });
+});
 
-Route::prefix('spp')->group(function () {
-    Route::get('/',[SppController::class,'index']);
-    Route::post('/',[SppController::class,'store']);
-    Route::get('edit/{id}',[SppController::class,'show']);
-    Route::post('edit/{id}',[SppController::class,'update']);
-    Route::get('delete/{id}',[SppController::class,'delete']);
-});
-Route::prefix('kelas')->group(function () {
-    Route::get('/',[KelasController::class,'index']);
-    Route::post('/',[KelasController::class,'store']);
-    Route::get('edit/{id}',[KelasController::class,'show']);
-    Route::post('edit/{id}',[KelasController::class,'update']);
-    Route::get('delete/{id}',[KelasController::class,'delete']);
-});
-
-Route::prefix('siswa')->group(function () {
-    Route::get('/',[SiswaController::class,'index']);
-    Route::get('create',[SiswaController::class,'create']);
-    Route::post('create',[SiswaController::class,'store']);
-    Route::get('edit/{id}',[SiswaController::class,'show']);
-    Route::post('edit/{id}',[SiswaController::class,'update']);
-    Route::get('delete/{id}',[SiswaController::class,'delete']);
-});
-
-Route::prefix('petugas')->group(function () {
-    Route::get('/',[PetugasController::class,'index']);
-    Route::get('create',[PetugasController::class,'create']);
-    Route::post('create',[PetugasController::class,'store']);
-    Route::get('edit/{id}',[PetugasController::class,'show']);
-    Route::post('edit/{id}',[PetugasController::class,'update']);
-    Route::get('delete/{id}',[PetugasController::class,'delete']);
-});
 Route::get('login',[AutentikasiController::class,'login'])->name('login');
 Route::post('admin/login',[AutentikasiController::class,'adminLogin']);
 Route::post('siswa/login',[AutentikasiController::class,'siswaLogin']);
