@@ -36,7 +36,7 @@
                         $no = 1;
                     @endphp
                     @foreach ($data as $item)
-                        <tr>
+                        <tr class="align-middle">
                             <td>{{ $no }}</td>
                             <td>{{ $item->nisn }}</td>
                             <td>{{ $item->nis }}</td>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SppController;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,13 @@ Route::prefix('siswa')->group(function () {
     Route::get('edit/{id}',[SiswaController::class,'show']);
     Route::post('edit/{id}',[SiswaController::class,'update']);
     Route::get('delete/{id}',[SiswaController::class,'delete']);
+});
+
+Route::prefix('petugas')->group(function () {
+    Route::get('/',[PetugasController::class,'index']);
+    Route::get('create',[PetugasController::class,'create']);
+    Route::post('create',[PetugasController::class,'store']);
+    Route::get('edit/{id}',[PetugasController::class,'show']);
+    Route::post('edit/{id}',[PetugasController::class,'update']);
+    Route::get('delete/{id}',[PetugasController::class,'delete']);
 });

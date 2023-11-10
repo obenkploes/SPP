@@ -33,6 +33,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{url('kelas')}}">Kelas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{url('petugas')}}">Petugas</a>
+                    </li>
                 </ul>
             </div>
         </div>

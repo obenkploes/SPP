@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Petugas extends Model
 {
     use HasFactory;
+    public $guarded=[];
+
+    // has Many
+    public function pembayaran(){
+        return $this->hasMany(Pembayaran::class,'id','id_petugas');
+    }
 }

@@ -22,7 +22,7 @@
                         </div>
                         <div class="mb-3 row">
                             <div class="col-6">
-                                <a class="btn btn-info form-control" href="{{url(spp)}}">Batal</a>
+                                <a class="btn btn-info form-control" href="{{url('spp')}}">Batal</a>
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-primary form-control">
