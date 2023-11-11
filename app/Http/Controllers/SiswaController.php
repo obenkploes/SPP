@@ -66,4 +66,13 @@ class SiswaController extends Controller
         }
         return back()->with('message','Data gagal dihapus');
     }
+
+    public function search($nisn){
+        $siswa = new Siswa();
+        $siswa = $siswa->with(['spp','kelas'])->where('nisn',$nisn);
+        if($siswa->exists()){
+            return response()->json($siswa->first(),200);
+        }
+        return response()->json(['message'=>'Data tidak ditemukan'],401);
+    }
 }

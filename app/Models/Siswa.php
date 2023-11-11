@@ -15,7 +15,7 @@ class Siswa extends Model
         return $this->hasMany(Pembayaran::class,'nisn','nisn');
     }
     public function spp(){
-        return $this->hasMany(Spp::class,'id','id_spp');
+        return $this->belongsTo(Spp::class,'id_spp','id');
     }
 
     // belongsto

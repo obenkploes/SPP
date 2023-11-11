@@ -9,4 +9,9 @@ class Spp extends Model
 {
     use HasFactory;
     public $guarded=[];
+
+    //has many
+    public function siswa(){
+        return $this->hasMany(Siswa::class,'id','id_spp');
+    }
 }

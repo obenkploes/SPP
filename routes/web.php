@@ -3,6 +3,7 @@
 use App\Http\Controllers\AutentikasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SppController;
@@ -46,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}',[SiswaController::class,'show']);
         Route::post('edit/{id}',[SiswaController::class,'update']);
         Route::get('delete/{id}',[SiswaController::class,'delete']);
+        Route::get('cari/{nisn}',[SiswaController::class,'search']);
     });
     
     Route::prefix('petugas')->group(function () {
@@ -55,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}',[PetugasController::class,'show']);
         Route::post('edit/{id}',[PetugasController::class,'update']);
         Route::get('delete/{id}',[PetugasController::class,'delete']);
+    });
+    Route::prefix('pembayaran')->group(function () {
+        Route::get('/',[PembayaranController::class,'index']);
     });
 });
 

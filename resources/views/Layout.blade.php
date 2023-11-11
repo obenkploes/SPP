@@ -37,6 +37,18 @@
                         <a class="nav-link text-white" href="{{url('petugas')}}">Petugas</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="{{url('pembayaran')}}">Pembayaran</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Laporan
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Riwayat pembayaran</a></li>
+                          <li><a class="dropdown-item" href="#">Laporan bulanan</a></li>
+                        </ul>
+                      </li>
+                    <li class="nav-item">
                         <a class="btn btn-danger" href="{{url('logout/admin')}}">
                             
                             <i class="bi bi-power"></i>
