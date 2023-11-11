@@ -26,4 +26,9 @@ class AutentikasiController extends Controller
         }
         return back()->with('message','Login gagal');
     }
+    public function logoutAdmin(){
+        Auth::logout();
+        
+        return redirect('login');
+    }
 }

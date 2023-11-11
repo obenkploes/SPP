@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutentikasiController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
@@ -23,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('',[DashboardController::class,'index'])->name('adminDashboard');
     Route::prefix('/spp')->group(function () {
         Route::get('/',[SppController::class,'index']);
         Route::post('/',[SppController::class,'store']);
@@ -59,3 +61,5 @@ Route::middleware(['auth'])->group(function () {
 Route::get('login',[AutentikasiController::class,'login'])->name('login');
 Route::post('admin/login',[AutentikasiController::class,'adminLogin']);
 Route::post('siswa/login',[AutentikasiController::class,'siswaLogin']);
+Route::get('logout/admin',[AutentikasiController::class,'logoutAdmin']);
+Route::get('logout/siswa',[AutentikasiController::class,'logoutSiswa']);

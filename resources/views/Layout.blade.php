@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="#">Home</a>
+                        <a class="nav-link text-white" aria-current="page" href="{{url('/')}}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{url('spp')}}">SPP</a>
@@ -35,6 +35,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{url('petugas')}}">Petugas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger" href="{{url('logout/admin')}}">
+                            
+                            <i class="bi bi-power"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
