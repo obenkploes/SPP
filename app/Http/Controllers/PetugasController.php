@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Petugas;
+use Hash;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
@@ -21,7 +22,11 @@ class PetugasController extends Controller
             'nama_petugas'=> 'required',
         ]);
         $p = new Petugas();
-        if($p->create( $request->all() )){
+        $p->username = $request->input('username');
+        $p->password = Hash::make( $request->input('password') );
+        $p->nama_petugas = $request->input('nama_petugas');
+        $p->level = $request->input('level');
+        if($p->save()){
             return redirect("petugas")->with("message","Data berhasil ditambahkan");
         }
         return back()->with("message","Data gagal ditambahkan");
@@ -37,7 +42,11 @@ class PetugasController extends Controller
             'nama_petugas'=> 'required',
         ]);
         $p = Petugas::find($id);
-        if($p->update( $request->all() )){
+        $p->username = $request->input('username');
+        $p->password = $request->input('password');
+        $p->nama_petugas = $request->input('nama_petugas');
+        $p->level = $request->input('level');
+        if($p->update()){
             return redirect("petugas")->with("message","Data berhasil diperbaharui");
         }
         return back()->with("message","Data gagal diperbaharui");
