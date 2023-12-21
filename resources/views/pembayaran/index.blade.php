@@ -42,7 +42,7 @@
                         <label for="tahun_dibayar" class="form-label">Tahun pembayaran</label>
                         <input type="text" class="form-control" id="tahun_dibayar" name="tahun_dibayar" value="{{date("Y")}}">
                     </div>
-                    <div class="col-12 row" >
+                    <div class="col-12 row mb-3" >
                         <div class="col-3">
                             <div class="input-group">
                                 <i class="bi bi-watch input-group-text"></i>
@@ -59,6 +59,12 @@
                                 <input type="text" class="form-control" id="jumlah_bayar" name="jumlah_bayar" readonly>
                             </div>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary form-control disabled" id="button-cetak">
+                            Simpan & cetak
+                            <i class="bi bi-printer-fill"></i>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -83,12 +89,14 @@
             document.getElementById('id_spp').value = siswa.id_spp
             document.getElementById('jumlah_bayar').value = siswa.spp.nominal
             nisnMessage.innerHTML = ''
+            document.getElementById('button-cetak').classList.toggle('disabled',false)
         })
         .catch(err=>{
             document.getElementById('nama').value = ''
             document.getElementById('kelas').value = ''
             document.getElementById('jumlah_bayar').value = 0
             nisnMessage.innerHTML = 'NISN tidak terdaftar'
+            document.getElementById('button-cetak').classList.toggle('disabled',true) 
         })
 
         
